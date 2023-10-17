@@ -24,6 +24,42 @@
             <p>Base Data</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.agama') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Agama</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.jurusan') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Jurusan</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.matkul') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Matkul</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.kelas') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Kelas</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.thnajaran') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Tahun Ajaran</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.mahasiswa') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Mahsiswa</p>
+          </a>
+        </li>
       </ul>
     </li>
 
