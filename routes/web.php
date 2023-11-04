@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Livewire\Kategori\MainIndex;
+use App\Http\Livewire\MasterData\AbsenMainIndex;
 use App\Http\Livewire\MasterData\AgamaMainIndex;
+use App\Http\Livewire\MasterData\DosenMainIndex;
+use App\Http\Livewire\MasterData\JadwalMainIndex;
 use App\Http\Livewire\MasterData\JurusanMainIndex;
 use App\Http\Livewire\MasterData\KelasMainIndex;
 use App\Http\Livewire\MasterData\MahasiswaMainIndex;
+use App\Http\Livewire\MasterData\MainIndexAbsen;
 use App\Http\Livewire\MasterData\MatkulMainIndex;
 use App\Http\Livewire\MasterData\ProdiMainIndex;
 use App\Http\Livewire\MasterData\ThnAjaranMainIndex;
@@ -34,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/kelas', KelasMainIndex::class)->name('kelas');
         Route::get('thnajaran', ThnAjaranMainIndex::class)->name('thnajaran');
         Route::get('/mahasiswa', MahasiswaMainIndex::class)->name('mahasiswa');
+        Route::get('/dosen', DosenMainIndex::class)->name('dosen');
+        Route::get('/jadwal', JadwalMainIndex::class)->name('jadwal');
+
+        Route::get('/absen', AbsenMainIndex::class)->name('absen');
     });
 });
 

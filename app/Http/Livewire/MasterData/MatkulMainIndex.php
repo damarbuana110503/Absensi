@@ -60,7 +60,7 @@ class MatkulMainIndex extends Component
             if ($data['jurusan'] != null) {
                 $this->jurusan = $data['jurusan'];
                 $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
-                $this->state['TEXT_JURUSAN'] = $data['jurusan']['FK_JURUSAN'] . ' - ' . $data['jurusan']['FN_JURUSAN'];
+                $this->state['TEXT_JURUSAN'] = $data['jurusan']['FN_JURUSAN'];
             }
         }
 
@@ -82,7 +82,7 @@ class MatkulMainIndex extends Component
 
             $this->jurusan = $data;
             $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
-            $this->state['TEXT_JURUSAN'] = $data['FK_JURUSAN'] . ' - ' . $data['FN_JURUSAN'];
+            $this->state['TEXT_JURUSAN'] = $data['FN_JURUSAN'];
         }
     }
 
@@ -120,7 +120,9 @@ class MatkulMainIndex extends Component
     public function editData($id)
     {
         try {
-            $getData = Matkul::where('FK_MATKUL', '=', $id)->firstOrFail();
+            $getData = Matkul::with([
+                'jurusan'
+            ])->where('FK_MATKUL', '=', $id)->firstOrFail();
 
             $this->showForm(true, $getData->toArray());
         } catch (\Exception $e) {

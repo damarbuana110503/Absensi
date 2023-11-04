@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\MasterData;
 
-use App\Models\Agama;
+use App\Models\Dosen;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AgamaModalData extends Component
+class DosenModalData extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -14,44 +14,43 @@ class AgamaModalData extends Component
     public $source = null;
 
     protected $listeners = [
-        'openModalAgama'
+        'openModalDosen'
     ];
     
     public function render()
     {
-        $getData = new Agama();
+        $getdata = new Dosen();
 
-        $getData = $getData->orderBy('FK_AGAMA', 'ASC')->paginate(5);
-        return view('livewire.master-data.agama-modal-data', [
-            'dataAgama' => $getData
+        $getdata = $getdata->orderBy('FK_DOSEN', 'ASC')->paginate(5);
+        return view('livewire.master-data.dosen-modal-data', [
+            'dataDosen' => $getdata
         ]);
     }
 
-    public function openModalAgama($data)
+    public function openModalDosen($data)
     {
         $this->reset('source');
 
         $this->source = $data['source'] ?? null;
         $showProps = $data['showProps'] ?? 'hide';
 
-        $this->emit('modal-agama', $showProps);
+        $this->emit('modal-dosen', $showProps);
     }
 
-    public function pilihAgama($id)
+    public function pilihDosen($id)
     {
         try {
-            $getData = Agama::where('FK_AGAMA', '=', $id)->firstOrFail();
+            $getData = Dosen::where('FK_DOSEN', '=', $id)->firstOrFail();
 
             
             if ($this->source != null) {
-                $this->emitTo($this->source, 'selectedAgama', $getData->toArray());
+                $this->emitTo($this->source, 'selectedDosen', $getData->toArray());
             }
 
-            $this->emit('modal-agama', 'hide');
+            $this->emit('modal-dosen', 'hide');
         } catch (\Exception $e) {
             $this->emit('error', 'Terjadi Kesalahan ! <br> Silahkan Hubungi Administrator !');
             dd($e);
         }
     }
-    
 }

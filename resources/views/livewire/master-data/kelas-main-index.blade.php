@@ -19,7 +19,7 @@
                 <div class="card-body text-sm py-2">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="form-group mb-0">
+                        <div class="form-group">
                             <label for="FK_KELAS">Kode Kelas : </label>
                             <input type="text" wire:model="state.FK_KELAS" name="kode_kelas" id="kode_kelas" class="form-control form-control-sm {{ $errors->has('state.FK_KELAS') ? 'is-invalid':'' }}" placeholder="Masukan Kode Kelas..." {{ $state['edit'] == true ? 'disabled':'' }}   required>
                             <div class="invalid-feedback">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="form-group mb-0">
+                        <div class="form-group">
                             <label for="FN_KELAS">Nama Kelas : </label>
                             <input type="text" wire:model="state.FN_KELAS" name="nama_kelas" id="nama_kelas" class="form-control form-control-sm {{ $errors->has('state.FN_KELAS') ? 'is-invalid':'' }}" placeholder="Masukan Nama Kelas..." required>
                             <div class="invalid-feedback">

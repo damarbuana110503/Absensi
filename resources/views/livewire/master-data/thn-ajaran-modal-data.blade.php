@@ -1,5 +1,5 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="modal-thn_ajaran">
+    <div wire:ignore.self class="modal fade" id="modal-thnajaran">
         <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($dataJurusan as $item)
+                                @forelse ($dataThnAjaran as $item)
                                     <tr>
                                         <td class="align-middle px-2 py-1 text-center font-weight-bold">{{ $item->FTHN_AJARAN }}</td>
                                         <td class="align-middle px-2 py-1 text-center">{{ $item->FBIAYA_SPP }}</td>
@@ -61,8 +61,8 @@
 @push('script')
     <script>
         $(document).ready(function () {
-            Livewire.on('modal-thn_ajaran', function(showValue) {
-                $('#modal-thn_ajaran').modal(showValue);
+            Livewire.on('modal-thnajaran', function(showValue) {
+                $('#modal-thnajaran').modal(showValue);
             });
         });
     </script>

@@ -31,4 +31,19 @@ class Mahasiswa extends Model
         'FALAMAT',
         'FNO_TELP_AYAH',
     ];
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'FK_JURUSAN', 'FK_JURUSAN');
+    }
+
+    public function agama()
+    {
+        return $this->belongsTo(Agama::class, 'FK_AGAMA', 'FK_AGAMA');
+    }
+
+    public function thnajaran()
+    {
+        return $this->belongsTo(ThnAjaran::class, 'FTHN_AJARAN', 'FTHN_AJARAN');
+    }
 }

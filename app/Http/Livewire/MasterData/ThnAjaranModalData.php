@@ -34,7 +34,7 @@ class ThnAjaranModalData extends Component
         $this->source = $data['source'] ?? null;
         $showProps = $data['showProps'] ?? 'hide';
 
-        $this->emit('modal-thn_ajaran', $showProps);
+        $this->emit('modal-thnajaran', $showProps);
     }
 
     public function pilihThnAjaran($id)
@@ -47,7 +47,7 @@ class ThnAjaranModalData extends Component
                 $this->emitTo($this->source, 'selectedThnAjaran', $getData->toArray());
             }
 
-            $this->emit('modal-thn_ajaran', 'hide');
+            $this->emit('modal-thnajaran', 'hide');
         } catch (\Exception $e) {
             $this->emit('error', 'Terjadi Kesalahan ! <br> Silahkan Hubungi Administrator !');
             dd($e);

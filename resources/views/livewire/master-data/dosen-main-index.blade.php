@@ -4,12 +4,12 @@
             <div class="card card-outline card-success">
                 <div class="card-header">
                     <h4 class="card-title">
-                        <span class="fa fa-edit mr-2"></span>
-                        Form Mahsiswa
+                        <span class="fa fa-edit mr-3"></span>
+                        Form Dosen
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-danger px-3" wire:click="showForm(false)">
+                        <button class="btn btn-xs btn-danger px-3" wire:click="showFrom(false)">
                             <span class="fa fa-times mr-2"></span>
                             Tutup Formulir
                         </button>
@@ -30,20 +30,20 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="FNIM">NIM Mahasiswa : </label>
-                                <input type="text" wire:model="state.FNIM" name="nim" id="nim" class="form-control form-control-sm {{ $errors->has('state.FNIM') ? 'is-invalid' : '' }}" placeholder="Masukan NIM..." {{ $state['edit'] == true ? 'disabled':'' }} required>
+                                <label for="FK_NIDN">Kode NIDN : </label>
+                                <input type="text" wire:model="state.FK_NIDN" name="nidn" id="nidn" class="form-control form-control-sm {{ $errors->has('state.FK_NIDN') ? 'is-invalid' : '' }}" placeholder="Masukan NIM..." {{ $state['edit'] == true ? 'disabled':'' }} required>
                                 <div class="invalid-feddback">
-                                    {{ $errors->first('state.FNIM') }}
+                                    {{ $errors->first('state.FK_NIDN') }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="FN_MAHASISWA">Nama Mahasiswa : </label>
-                                <input type="text" wire:model="state.FN_MAHASISWA" name="nama_mahasiswa" id="nama_mahasiswa" class="form-control form-control-sm {{ $errors->has('state.FN_MAHASISWA') ? 'is-invalid' : '' }}" placeholder="Masukan Nama Mahsiswa..." required>
+                                <label for="FN_DOSEN">Nama Dosen : </label>
+                                <input type="text" wire:model="state.FN_DOSEN" name="nama_dosen" id="nama_dosen" class="form-control form-control-sm {{ $errors->has('state.FN_DOSEN') ? 'is-invalid' : '' }}" placeholder="Masukan Nama Mahsiswa..." required>
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('state.FN_MAHASISWA') }}
+                                    {{ $errors->first('state.FN_DOSEN') }}
                                 </div>
                             </div>
                         </div>
@@ -58,20 +58,6 @@
                             </select>
                             <div class="invalid-feedback">
                                 {{ $errors->first('state.FK_KEL') }}
-                            </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                            <label for="FSTATUS_AKTIF">Status Mahasiswa : </label>
-                            <select name="kelamin" wire:model="state.FSTATUS_AKTIF" id="kelamin" class="form-control from-control-sm {{ $errors->has('state.FSTATUS_AKTIF') ? 'is-invalid':'' }}">
-                                <option value="">- Pilih Status -</option>
-                                <option value="Aktif">Aktif</option>
-                                <option value="Tidak Aktif">Tidak Aktif</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                {{ $errors->first('state.FSTATUS_AKTIF') }}
                             </div>
                             </div>
                         </div>
@@ -96,16 +82,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="FASAL_SEKOLAH">Asal Sekaloh : </label>
-                                <input type="text" wire:model="state.FASAL_SEKOLAH" name="asal_sekolah" id="asal_sekolah" class="form-control form-control-sm {{ $errors->has('state.FASAL_SEKOLAH') ? 'is-invalid' : '' }}" placeholder="Masukan Nama Asal Sekolah..." required>
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('state.FASAL_SEKOLAH') }}
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="FNO_TELP_HP">Nomor Telfon : </label>
@@ -116,36 +92,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="FN_AYAH">Nama Ayah : </label>
-                                <input type="text" wire:model="state.FN_AYAH" name="nama_ayah" id="nama_ayah" class="form-control form-control-sm {{ $errors->has('state.FN_AYAH') ? 'is-invalid' : '' }}" placeholder="Masukan Nama Asal Sekolah..." required>
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('state.FN_AYAH') }}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="FNO_TELP_AYAH">Nomor Telfon Ayah / Ibu : </label>
-                                <input type="text" wire:model="state.FNO_TELP_AYAH" name="no_telp_ayah" id="no_telp_ayah" class="form-control form-control-sm {{ $errors->has('state.FNO_TELP_AYAH') ? 'is-invalid':'' }}" placeholder="Masukan Nomor Telfon Ayah / Ibu..." required>
-                            <div class="invalid-feedback">
-                                {{ $errors->first('state.FNO_TELP_AYAH') }}
-                            </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="FN_IBU">Nama Ibu : </label>
-                                <input type="text" wire:model="state.FN_IBU" name="nama_ayah" id="nama_ayah" class="form-control form-control-sm {{ $errors->has('state.FN_IBU') ? 'is-invalid' : '' }}" placeholder="Masukan Nama Asal Sekolah..." required>
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('state.FN_IBU') }}
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="FALAMAT">Alamat : </label>
@@ -153,21 +99,6 @@
                             <div class="invalid-feedback">
                                 {{ $errors->first('state.FALAMAT') }}
                             </div>
-                            </div>
-                        </div>
-{{-- modal data --}}
-                        <div class="col-md-6">
-                            <div class="from-group">
-                                <label for="FTHN_AJARAN">Tahun Ajaran : </label>
-                                <div class="float-right">
-                                    <button class="badge badge-info px-3" wire:click="openModalThnAjaran">
-                                        Pilih Tahun Ajaran
-                                    </button>
-                                </div>
-                                <input type="text" wire:model="state.TEXT_THN-AJARAN" name="tahun_ajaran" id="thn_ajaran" class="form-control form-control-sm {{ $errors->has('state.FTHN_AJARAN') ? 'is-invalid' : '' }}" placeholder="-- Pilihan Data Tahun Ajaran --" disabled required>
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('state.FTHN_AJARAN') }}
-                                </div>
                             </div>
                         </div>
 
@@ -200,7 +131,6 @@
                                 </div>
                             </div>
                         </div>
-{{-- modal data --}}
                     </div>
                 </div>
 
@@ -221,33 +151,34 @@
                                     Buat Data
                                 </button>
                             </div>
-                        </div>
+                        </div>    
                         @endif
                         <div class="col-md-3">
                             <div class="form-group">
                                 <button class="btn btn-sm btn-block btn-danger">
                                     <span class="fa fa-undo mr-2"></span>
-                                    Reset / Batal
+                                    Reset / Batalkan
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
+        
         <div class="col-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
                     <h4 class="card-title">
                         <span class="fa fa-table mr-3"></span>
-                        Master Data Mahsiswa
+                        Master Data Dosen
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-success px-3" wire:click="showForm(true)">
+                        <button class="btn btn-xs btn-success px-3" wire:click="showFrom(true)">
                             <span class="fa fa-plus mr-2"></span>
-                            Tambah Data Mahsiswa
+                            Tambah Data Dosen   
                         </button>
                     </div>
                 </div>
@@ -256,69 +187,51 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="align-middle px-2 py-2 text-center">No.</th>
-                                <th class="align-middle px-2 py-2 text-center">No KTP</th>
-                                <th class="align-middle px-2 py-2 text-center">NIM Mahasiswa</th>
-                                <th class="align-middle px-2 py-2 text-center">Nama Mahasiswa</th>
-                                <th class="align-middle px-2 py-2 text-center">Jenis Kelamin</th>
-                                <th class="align-middle px-2 py-2 text-center">Status Mahasiswa</th>
-                                <th class="align-middle px-2 py-2 text-center">Tempat Lahir</th>
-                                <th class="align-middle px-2 py-2 text-center">Tanggal Lahir</th>
-                                <th class="align-middle px-2 py-2 text-center">Asal Sekolah</th>
-                                <th class="align-middle px-2 py-2 text-center">Nomor Telfon</th>
-                                <th class="align-middle px-2 py-2 text-center">Aksi</th>
+                                <td class="align-middle py-2 px-2 text-center">No.</td>
+                                <td class="align-middle py-2 px-2 text-center">No Ktp</td>
+                                <td class="align-middle py-2 px-2 text-center">Kode NIDN</td>
+                                <td class="align-middle py-2 px-2 text-center">Nama Dosen</td>
+                                <td class="align-middle py-2 px-2 text-center">Jenis Kelamin</td>
+                                <td class="align-middle py-2 px-2 text-center">No Telepon</td>
+                                <td class="align-middle py-2 px-2 text-center">Aksi</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($dataMahasiswa as $item )
+                            @forelse ($dataDosen as $item )
                                 <tr>
-                                    <td class="align-middle px-2 py-2 text-center">{{ ($dataMahasiswa->currentpage()-1) * $dataMahasiswa->perpage() + $loop->index + 1 }}.</td>
+                                    <td class="align-middle px-2 py-2 text-center">{{ ($dataDosen->currentpage()-1) * $dataDosen->perpage() + $loop->index + 1 }}.</td>
                                     <td class="align-middle px-2 py-2 text-center">{{ $item->FNO_KTP }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FNIM }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FN_MAHASISWA }}</td>
+                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FK_NIDN }}</td>
+                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FN_DOSEN }}</td>
                                     <td class="align-middle px-2 py-2 text-center">{{ $item->FK_KEL }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FSTATUS_AKTIF }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FTMP_LAHIR }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FTGL_LAHIR }}</td>
-                                    <td class="align-middle px-2 py-2 text-center">{{ $item->FASAL_SEKOLAH }}</td>
                                     <td class="align-middle px-2 py-2 text-center">{{ $item->FNO_TELP_HP }}</td>
                                     <td class="align-middle px-2 py-2 text-center">
                                         <div class="btn-group">
-                                            <button class="btn btn-info px-3" wire:click="detailData('{{ $item->FNIM }}')">
+                                            <button class="btn btn-info px-3" wire:click="detailData('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-info"></span>
                                             </button>
-                                            <button class="btn btn-xs btn-warning px-3" wire:click="editData('{{ $item->FNIM }}')">
+                                            <button class="btn btn-xs btn-warning px-3" wire:click="editData('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-edit"></span>
                                             </button>
-                                            <button class="btn btn-xs btn-danger px-3" wire:click="deleteData('{{ $item->FNIM }}')">
+                                            <button class="btn btn-xs btn-danger px-3" wire:click="deleteData('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-trash"></span>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
-                            <tr>
-                                <td colspan="11" class="text-center">Belum Ada Data Mahsiswa</td>
-                            </tr>
+                                
                             @endforelse
+                            <tr>
+                                <td colspan="7" class="text-center">Belum Ada Data Dosen</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="card-footer">
-                    <div class="float-right">
-                        {{ $dataMahasiswa->links() }}
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
     @livewire('master-data.jurusan-modal-data')
     @livewire('master-data.agama-modal-data')
-    @livewire('master-data.thn-ajaran-modal-data')
-
-    @livewire('master-data.mahasiswa-modal-detail')
 </div>
-

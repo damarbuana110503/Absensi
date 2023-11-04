@@ -10,7 +10,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="{{ route('backend.main') }}" class="nav-link">
         <i class="nav-icon fa fa-cogs text-secondary"></i>
         <p>
           Master Data
@@ -19,7 +19,7 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('backend.main') }}" class="nav-link">
             <i class="fas fa-university nav-icon"></i>
             <p>Base Data</p>
           </a>
@@ -60,9 +60,27 @@
             <p>Master Mahsiswa</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.dosen') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Dosen</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('backend.jadwal') }}" class="nav-link">
+            <i class="fas fa-university nav-icon"></i>
+            <p>Master Jadwal</p>
+          </a>
+        </li>
       </ul>
     </li>
-
+  
+    <li class="nav-item">
+      <a href="{{ route('backend.absen') }}" class="nav-link">
+        <i class="fas fa-university nav-icon"></i>
+        <p>Input Absensi</p>
+      </a>
+    </li>
     {{-- <li class="nav-item {{ (request()->is('akun*')) || (request()->is('roles*')) ? 'menu-open' : '' }}">
       <a href="#" class="nav-link {{ (request()->is('akun*')) || (request()->is('roles*')) ? 'active' : '' }}">
         <i class="nav-icon fas fa-users text-secondary"></i>
