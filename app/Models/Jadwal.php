@@ -29,13 +29,14 @@ class Jadwal extends Model
         return $this->belongsTo(Jurusan::class, 'FK_JURUSAN', 'FK_JURUSAN');
     }
 
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'FK_NIDN', 'FK_NIDN');
+    }
+
     public function matkul()
     {
         return $this->belongsTo(Matkul::class, 'FK_MATKUL', 'FK_MATKUL');
     }
 
-    public function dosen()
-    {
-        return $this->belongsTo(Dosen::class, 'FK_NIDN', 'FK_NIDN');
-    }
 }

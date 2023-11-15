@@ -21,7 +21,7 @@ class DosenModalData extends Component
     {
         $getdata = new Dosen();
 
-        $getdata = $getdata->orderBy('FK_DOSEN', 'ASC')->paginate(5);
+        $getdata = $getdata->orderBy('FK_NIDN', 'ASC')->paginate(5);
         return view('livewire.master-data.dosen-modal-data', [
             'dataDosen' => $getdata
         ]);
@@ -40,7 +40,7 @@ class DosenModalData extends Component
     public function pilihDosen($id)
     {
         try {
-            $getData = Dosen::where('FK_DOSEN', '=', $id)->firstOrFail();
+            $getData = Dosen::where('FK_NIDN', '=', $id)->firstOrFail();
 
             
             if ($this->source != null) {

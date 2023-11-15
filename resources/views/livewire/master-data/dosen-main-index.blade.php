@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-12 {{ $form ? 'd-block' : 'd-block' }}">
+        <div class="col-12 {{ $form == true ? 'd-block' : 'd-none' }}">
             <div class="card card-outline card-success">
                 <div class="card-header">
                     <h4 class="card-title">
@@ -9,7 +9,7 @@
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-danger px-3" wire:click="showFrom(false)">
+                        <button class="btn btn-xs btn-danger px-3" wire:click="showForm(false)">
                             <span class="fa fa-times mr-2"></span>
                             Tutup Formulir
                         </button>
@@ -30,7 +30,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="FK_NIDN">Kode NIDN : </label>
+                                <label for="nidn">Kode NIDN : </label>
                                 <input type="text" wire:model="state.FK_NIDN" name="nidn" id="nidn" class="form-control form-control-sm {{ $errors->has('state.FK_NIDN') ? 'is-invalid' : '' }}" placeholder="Masukan NIM..." {{ $state['edit'] == true ? 'disabled':'' }} required>
                                 <div class="invalid-feddback">
                                     {{ $errors->first('state.FK_NIDN') }}
@@ -172,11 +172,11 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <span class="fa fa-table mr-3"></span>
-                        Master Data Dosen
+                        Data Dosen
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-success px-3" wire:click="showFrom(true)">
+                        <button class="btn btn-xs btn-success px-3" wire:click="showForm(true)">
                             <span class="fa fa-plus mr-2"></span>
                             Tambah Data Dosen   
                         </button>
@@ -206,25 +206,24 @@
                                     <td class="align-middle px-2 py-2 text-center">{{ $item->FK_KEL }}</td>
                                     <td class="align-middle px-2 py-2 text-center">{{ $item->FNO_TELP_HP }}</td>
                                     <td class="align-middle px-2 py-2 text-center">
+                                        <button class="btn btn-info btn-sm" wire:click="detailData('{{ $item->FK_NIDN }}')">
+                                            Detail
+                                        </button>
                                         <div class="btn-group">
-                                            <button class="btn btn-info px-3" wire:click="detailData('{{ $item->FK_NIDN }}')">
-                                                <span class="fa fa-info"></span>
-                                            </button>
-                                            <button class="btn btn-xs btn-warning px-3" wire:click="editData('{{ $item->FK_NIDN }}')">
+                                            <button class="btn btn-warning btn-sm" wire:click="editData('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-edit"></span>
                                             </button>
-                                            <button class="btn btn-xs btn-danger px-3" wire:click="deleteData('{{ $item->FK_NIDN }}')">
+                                            <button class="btn btn-danger btn-sm" wire:click="deleteData('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-trash"></span>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
-                                
-                            @endforelse
                             <tr>
                                 <td colspan="7" class="text-center">Belum Ada Data Dosen</td>
-                            </tr>
+                            </tr>                                
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -234,4 +233,6 @@
 
     @livewire('master-data.jurusan-modal-data')
     @livewire('master-data.agama-modal-data')
+
+    @livewire('master-data.dosen-modal-detail')
 </div>

@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 {{ $form == true ? 'd-block':'d-none' }}">
             <div class="card card-outline card-success">
                 <div class="card-header">
                     <h4 class="card-title">
@@ -9,7 +9,7 @@
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-danger px-3">
+                        <button class="btn btn-xs btn-danger px-3" wire:click="showForm(false)">
                             <span class="fa fa-times mr-2"></span>
                             Tutup Formulir
                         </button>
@@ -30,7 +30,7 @@
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="FTGL">Tanggal :</label>
+                                <label for="tanggal">Tanggal :</label>
                                     <input type="date" wire:model="state.FTGL" name="tanggal" id="tanggal" class="form-control form-control-sm {{ $errors->has('state.FTGL') ? 'is-invalid':'' }}" required>
                                 <div class="invalid-feedback">
                                 {{ $errors->first('state.FTGL') }}
@@ -40,7 +40,7 @@
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="FJAM_MULAI">Jam Masuk : </label>
+                                <label for="mulai">Jam Masuk : </label>
                                 <input type="time" wire:model="state.FJAM_MULAI" name="mulai" id="mulai" class="form-control form-control-sm {{ $errors->has('state.FJAM_MULAI') ? 'is-invalid':'' }}" required>
                                 <div class="invalid-feedback">
                                     {{ $errors->first('state.FJAM_MULAI') }}
@@ -67,7 +67,6 @@
                                 </div>
                             </div>
                         </div>
-{{-- modal data --}}
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="FK_JURUSAN">Jurusan : </label>
@@ -112,20 +111,30 @@
                                 </div>
                             </div>
                         </div>
-{{-- modal data --}}
                     </div>
                 </div>
 
                 <div class="card-footer">
                     <div class="row">
+                        @if ($state['edit'] == true)
                         <div class="col-md-3">
                             <div class="form-group">
-                                <button class="btn btn-sm btn-block btn-success">
+                                <button class="btn btn-sm btn-block btn-success" wire:click="updateData">
+                                    <span class="fa fa-check mr-2"></span>
+                                    Simpan Perubahan 
+                                </button>
+                            </div>
+                        </div>                            
+                        @else
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button class="btn btn-sm btn-block btn-success" wire:click="createData">
                                     <span class="fa fa-check mr-2"></span>
                                     Buat Data 
                                 </button>
                             </div>
-                        </div>
+                        </div>                            
+                        @endif
                         <div class="col-md-3">
                             <div class="form-group">
                                 <button class="btn btn-sm btn-block btn-danger">
@@ -144,11 +153,11 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <span class="fa fa-table mr-3"></span>
-                        Master Data
+                        Data Jadwal
                     </h4>
 
                     <div class="card-tools">
-                        <button class="btn btn-xs btn-success px-3">
+                        <button class="btn btn-xs btn-success px-3" wire:click="showForm(true)">
                             <span class="fa fa-plus mr-2"></span>
                             Tambah Data Jadwal
                         </button>
@@ -172,9 +181,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($dataJadwal as $item)
+                            <tr>
+                                <td class="align-middle px-2 py-2 text-center">
+                                    {{ ($dataMatkul->currentpage()-1) * $dataMatkul->perpage() + $loop->index + 1 }}.
+                                </td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->FK_JADWAL }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->matkul->FN_MATKUL }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->dosen->FN_DOSEN }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->jurusan->FN_JURUSAN }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->FTGL }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->FJAM_MULAI }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->FJAM_KELUAR }}</td>
+                                <td class="align-middle px-2 py-2 text-center">{{ $item->FSTATUS_JADWAL }}</td>                                
+                            </tr>
+                            @empty
                             <tr>
                                 <td colspan="10" class="text-center">Belum Ada Jadwal</td>
                             </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -183,6 +208,6 @@
     </div>
 
     @livewire('master-data.jurusan-modal-data')
-    {{-- @livewire('master-data.dosen-modal-data') --}}
+    @livewire('master-data.dosen-modal-data')
     @livewire('master-data.matkul-modal-data')
 </div>

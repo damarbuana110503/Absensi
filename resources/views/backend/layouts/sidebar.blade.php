@@ -57,7 +57,7 @@
         <li class="nav-item">
           <a href="{{ route('backend.mahasiswa') }}" class="nav-link">
             <i class="fas fa-university nav-icon"></i>
-            <p>Master Mahsiswa</p>
+            <p>Master Mahasiswa</p>
           </a>
         </li>
         <li class="nav-item">

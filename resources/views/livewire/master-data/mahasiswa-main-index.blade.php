@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-12 {{ $form ? 'd-block' : 'd-block' }}">
+        <div class="col-12 {{ $form == true ? 'd-block' : 'd-none' }}">
             <div class="card card-outline card-success">
                 <div class="card-header">
                     <h4 class="card-title">

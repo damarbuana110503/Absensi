@@ -28,7 +28,7 @@
                                     <tr>
                                         <td class="align-middle px-2 py-1 text-center font-weight-bold">{{ $item->FK_MATKUL }}</td>
                                         <td class="align-middle px-2 py-1 text-center">{{ $item->FN_MATKUL }}</td>
-                                        {{-- <td class="align-middle px-2 py-1 text-center">{{ $item->FN_JURUSAN }}</td> --}}
+                                        <td class="align-middle px-2 py-1 text-center">{{ $item->jurusan->FN_JURUSAN }}</td>
                                         <td class="align-middle px-2 py-1 text-center">
                                             <button class="btn btn-xs btn-success px-3" wire:click="pilihMatkul('{{ $item->FK_MATKUL }}')">
                                                 <span class="fa fa-check mr-2"></span>

@@ -26,11 +26,11 @@
                             <tbody>
                                 @forelse ($dataDosen as $item)
                                     <tr>
-                                        <td class="align-middle px-2 py-1 text-center font-weight-bold">{{ $item->FK_DOSEN }}</td>
+                                        <td class="align-middle px-2 py-1 text-center font-weight-bold">{{ $item->FK_NIDN }}</td>
                                         <td class="align-middle px-2 py-1 text-center">{{ $item->FN_DOSEN }}</td>
-                                        <td class="align-middle px-2 py-1 text-center">{{ $item->FN_JURUSAN }}</td>
+                                        <td class="align-middle px-2 py-1 text-center">{{ $item->jurusan->FN_JURUSAN }}</td>
                                         <td class="align-middle px-2 py-1 text-center">
-                                            <button class="btn btn-xs btn-success px-3" wire:click="pilihDosen('{{ $item->FK_DOSEN }}')">
+                                            <button class="btn btn-xs btn-success px-3" wire:click="pilihDosen('{{ $item->FK_NIDN }}')">
                                                 <span class="fa fa-check mr-2"></span>
                                                 Pilih Data 
                                             </button>

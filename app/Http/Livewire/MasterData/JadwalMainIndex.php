@@ -95,62 +95,62 @@ class JadwalMainIndex extends Component
         }
 }
 
-public function openModalJurusan()
-{
-    $this->emitTo('master-data.jurusan-modal-data', 'openModalJurusan', [
-        'showProps' => 'show',
-        'source' => 'master-data.jadwal-main-index'
-    ]);
-}
-
-public function selectedJurusan($data)
-{
-    if ($data != null) {
-        $this->reset('jurusan');
-
-        $this->jurusan = $data;
-        $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
-        $this->state['TEXT_JURUSAN'] = $data['FK_JURUSAN'] . ' - ' . $data['FN_JURUSAN'];
+    public function openModalJurusan()
+    {
+        $this->emitTo('master-data.jurusan-modal-data', 'openModalJurusan', [
+            'showProps' => 'show',
+            'source' => 'master-data.jadwal-main-index'
+        ]);
     }
-}
 
-public function openModalDosen()
-{
-    $this->emitTo('master-data.dosen-modal-data', 'openModalDosen', [
-        'showProps' => 'show',
-        'source' => 'master-data.jadwal-main-index'
-    ]);
-}
+    public function selectedJurusan($data)
+    {
+        if ($data != null) {
+            $this->reset('jurusan');
 
-public function selectedDosen($data)
-{
-    if ($data != null) {
-        $this->reset('dosen');
-
-        $this->dosen = $data;
-        $this->state['FK_NIDN'] = $data['FK_NIDN'];
-        $this->state['TEXT_DOSEN'] = $data['FN_DOSEN'];
+            $this->jurusan = $data;
+            $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
+            $this->state['TEXT_JURUSAN'] = $data['FK_JURUSAN'] . ' - ' . $data['FN_JURUSAN'];
+        }
     }
-}
 
-public function openModalMatkul()
-{
-    $this->emitTo('master-data.matkul-modal-data', 'openModalMatkul', [
-        'showProps' => 'show',
-        'source' => 'master-data.jadwal-main-index'
-    ]);
-}
-
-public function selectedMatkul($data)
-{
-    if ($data != null) {
-        $this->reset('matkul');
-
-        $this->matkul = $data;
-        $this->state['FK_MATKUL'] = $data['FK_MATKUL'];
-        $this->state['TEXT_MATKUL'] = $data['FN_MATKUL'];
+    public function openModalDosen()
+    {
+        $this->emitTo('master-data.dosen-modal-data', 'openModalDosen', [
+            'showProps' => 'show',
+            'source' => 'master-data.jadwal-main-index'
+        ]);
     }
-}
+
+    public function selectedDosen($data)
+    {
+        if ($data != null) {
+            $this->reset('dosen');
+
+            $this->dosen = $data;
+            $this->state['FK_NIDN'] = $data['FK_NIDN'];
+            $this->state['TEXT_DOSEN'] = $data['FK_NIDN'] . ' - ' . $data['FN_DOSEN'];
+        }
+    }
+
+    public function openModalMatkul()
+    {
+        $this->emitTo('master-data.matkul-modal-data', 'openModalMatkul', [
+            'showProps' => 'show',
+            'source' => 'master-data.jadwal-main-index'
+        ]);
+    }
+
+    public function selectedMatkul($data)
+    {
+        if ($data != null) {
+            $this->reset('matkul');
+
+            $this->matkul = $data;
+            $this->state['FK_MATKUL'] = $data['FK_MATKUL'];
+            $this->state['TEXT_MATKUL'] = $data['FK_MATKUL'] . ' - ' . $data['FN_MATKUL'];
+        }
+    }
 
 
 
@@ -176,6 +176,7 @@ public function selectedMatkul($data)
         ]);
 
         DB::beginTransaction();
+
         try {
             $createData = Jadwal::create([
                 'FK_JADWAL' => trim( $this->state['FK_JADWAL']),
@@ -245,8 +246,7 @@ public function selectedMatkul($data)
                 'FSTATUS_JADWAL' => trim($this->state['FSTATUS_JADWAL']),
                 'FK_MATKUL' => trim($this->state['FK_MATKUL']),
                 'FK_NIDN' => trim($this->state['FK_NIDN']),
-                'FK_JURUSAN' => trim($this->state['FK_JURUSAN']),
-                
+                'FK_JURUSAN' => trim($this->state['FK_JURUSAN']),                
             ]);
 
             DB::commit();
@@ -263,6 +263,7 @@ public function selectedMatkul($data)
     public function deleteData($id)
     {
         DB::beginTransaction();
+
         try {
             $getData = Jadwal::where('FK_JADWAL', '=', $id)->firstOrFail();
             $deleteData = $getData->delete();

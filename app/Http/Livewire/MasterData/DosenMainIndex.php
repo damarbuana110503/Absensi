@@ -30,7 +30,6 @@ class DosenMainIndex extends Component
         
         'FK_KEL' => null,
         
-
         'FK_JURUSAN' => null,
         'TEXT_JURUSAN' => null,
 
@@ -77,19 +76,20 @@ class DosenMainIndex extends Component
             $this->state['FNO_TELP_HP'] = $data['FNO_TELP_HP'];
             $this->state['FALAMAT'] = $data['FALAMAT'];
             $this->state['FK_KEL'] = $data['FK_KEL'];
+            
+            if ($data['jurusan'] != null) {
+                $this->jurusan = $data['jurusan'];
+                $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
+                $this->state['TEXT_JURUSAN'] = $data['jurusan']['FK_JURUSAN'];
+            }
+    
+            if ($data['agama'] != null) {
+                $this->agama = $data['agama'];
+                $this->state['FK_AGAMA'] = $data['FK_AGAMA'];
+                $this->state['TEXT_AGAMA'] = $data['agama']['FN_AGAMA'];
+            }
         }
 
-        if ($data['jurusan'] != null) {
-            $this->jurusan = $data['jurusan'];
-            $this->state['FK_JURUSAN'] = $data['FK_JURUSAN'];
-            $this->state['TEXT_JURUSAN'] = $data['jurusan']['FN_JURUSAN'];
-        }
-
-        if ($data['agama'] != null) {
-            $this->agama = $data['agama'];
-            $this->state['FK_AGAMA'] = $data['FK_AGAMA'];
-            $this->state['TEXT_AGAMA'] = $data['agama']['FN_AGAMA'];
-        }
     }
 
     public function openModalJurusan()
@@ -148,10 +148,11 @@ class DosenMainIndex extends Component
             'required' => 'Data / Input Tidak Boleh Kosong !',
             'unique' => 'Data / Input Dengan Data Tersebut Sudah Ada !',
             'string' => 'Input Harus Berupa Alphanumerik',
-
+            'exists' => 'Data tidak valid, Silahkan pilih ulang data !'
         ]);
 
         DB::beginTransaction();
+        
         try {
             $createData = Dosen::create([
                 'FNO_KTP' => trim($this->state['FNO_KTP']),
@@ -253,5 +254,13 @@ class DosenMainIndex extends Component
             $this->emit('error', 'Terjasi Kesalahan ! <br> Silahkan Hubungi Administrator !');
             dd($e);
         }
+    }
+
+    public function detailData($id)
+    {
+        $this->emitTo('master-data.dosen-modal-detail', 'openModalDetail', [
+            'showProps' => 'show',
+            'FK_NIDN' => $id,
+        ]);
     }
 }
